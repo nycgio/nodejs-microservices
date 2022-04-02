@@ -1,0 +1,29 @@
+.container {
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+
+  h1 {
+    margin: 1rem 0;
+  }
+}
+
+.card {
+  background-color: rgba($color: #ffffff, $alpha: 0.5);
+  width: 100%;
+  border-radius: 5px;
+}
+
+.postCreate {
+  background-color: rgba($color: lime, $alpha: 0.2);
+  padding: 2rem;
+
+  label {
+    margin-right: 1rem;
+  }
+}
+
+.formGroup {
+  display: flex;
+  align-items: center;
+}
