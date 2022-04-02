@@ -8,10 +8,16 @@
   }
 }
 
-.card {
-  background-color: rgba($color: #ffffff, $alpha: 0.5);
-  width: 100%;
-  border-radius: 5px;
+.cardContainer {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+
+  .card {
+    background-color: rgba($color: #ffffff, $alpha: 0.2);
+    width: 30%;
+    padding: 1rem;
+  }
 }
 
 .postCreate {
