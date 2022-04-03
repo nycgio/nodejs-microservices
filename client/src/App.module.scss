@@ -11,7 +11,7 @@
 
 .cardContainer {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+  grid-template-columns: 1fr;
   gap: 1rem;
 
   .card {
@@ -26,6 +26,8 @@
     }
 
     .body {
+      max-height: 200px;
+      overflow-y: scroll;
       padding: 1rem;
 
       .formGroup {
@@ -43,11 +45,16 @@
         padding: 1rem 0;
 
         li {
-          background-color: rgba($color: #000000, $alpha: 0.5);
-          padding: 0.5rem 1rem;
-
           &:not(:last-child) {
-            margin-bottom: 1rem;
+            margin-bottom: 0.5rem;
+          }
+
+          p {
+            display: inline-block;
+            background-color: rgba($color: #000000, $alpha: 0.5);
+            padding: 0.5rem 1rem;
+            border-top-right-radius: 5px;
+            border-bottom-right-radius: 5px;
           }
         }
       }
@@ -58,6 +65,10 @@
     .card {
       width: unset;
     }
+  }
+
+  @media screen and (min-width: 1024px) {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   }
 }
 
@@ -73,6 +84,10 @@
 .formGroup {
   display: flex;
   flex-direction: column;
+
+  input {
+    width: 100%;
+  }
 
   @media screen and (min-width: 768px) {
     flex-direction: row;
