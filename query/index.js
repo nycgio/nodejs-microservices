@@ -7,11 +7,7 @@ app.use(cors());
 
 const posts = {};
 
-app.get("/posts", (req, res) => {
-  res.json(posts);
-});
-
-app.post("/events", (req, res) => {
+const handleEvent = (type, data)=>{
   const { type, data } = req.body;
 
   if (type === "PostCreated") {
@@ -35,8 +31,25 @@ app.post("/events", (req, res) => {
   }
 
   res.send({});
+}
+
+app.get("/posts", (req, res) => {
+  res.json(posts);
 });
+
+app.post("/events", (req, res) => {
+  const {type, data} = req.body;
+  handleEvent(type, data);
+  res.json({});
+});
+
 
 app.listen(4002, () => {
   console.log(`listening on 4002`);
+  const res = await axios.get("http://event-bus-srv:4005/events");
+
+  for(let event in res.data){
+    console.log(`Processing event: ${event.type}`)
+    handleEvent(event.type, event.data);
+  }
 });
