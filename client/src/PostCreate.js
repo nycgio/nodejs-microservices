@@ -9,7 +9,7 @@ function PostCreate() {
     e.preventDefault();
 
     // send a post request to our post service
-    await axios.post("http://localhost:4000/posts", {
+    await axios.post("http://posts.com/posts/create", {
       title,
     });
 
