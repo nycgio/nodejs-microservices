@@ -28,8 +28,6 @@ const handleEvent = (type, data) => {
     comment.status = status;
     comment.content = content;
   }
-
-  res.send({});
 };
 
 app.get("/posts", (req, res) => {
@@ -48,8 +46,8 @@ app.listen(4002, async () => {
     const res = await axios.get("http://event-bus-srv:4005/events");
 
     for (let event in res.data) {
-      console.log(`Processing event: ${event.type}`);
-      handleEvent(event.type, event.data);
+      console.log(`Processing event: ${res.data[event].type}`);
+      handleEvent(res.data[event].type, res.data[event].data);
     }
   } catch (error) {
     console.error(error);
